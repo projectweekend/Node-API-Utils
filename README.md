@@ -5,9 +5,9 @@ npm install projectweekend/Node-API-Utils
 ```
 
 
-## Authentication
+### Authentication
 
-### Generate JSON web token
+#### Generate JSON web token
 
 ```javascript
 var authUtils = require( "api-utils" ).authentication;
@@ -22,7 +22,7 @@ var token = authUtils.generateJWT( user, [ "id", "email", "role" ] );
 * An array of user properties to include in the serialization
 
 
-### Middleware requiring a system-wide API key
+#### Middleware requiring a system-wide API key
 
 ```javascript
 var authUtils = require( "api-utils" ).authentication;
@@ -43,9 +43,9 @@ server.use( authUtils.systemAPIKey() );
 ------------
 
 
-## Blitz.io
+### Blitz.io
 
-### Authorization route for Blitz.io load testing
+#### Authorization route for Blitz.io load testing
 
 ```javascript
 var blitzio = require( "api-utils" ).blitzio;
@@ -64,9 +64,9 @@ server.get( blitzio.url, blitzio.handler );
 ------------
 
 
-## Database
+### Database
 
-### Mongoose connection with Fig DB fallback
+#### Mongoose connection with Fig DB fallback
 
 ```javascript
 var databaseUtils = require( "api-utils" ).database;
