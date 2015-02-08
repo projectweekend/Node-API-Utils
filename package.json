@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/projectweekend/Node-API-Utils/issues"
   },
-  "homepage": "https://github.com/projectweekend/Node-API-Utils"
+  "homepage": "https://github.com/projectweekend/Node-API-Utils",
+  "dependencies": {
+    "jsonwebtoken": "^3.2.2",
+    "lodash": "^3.1.0"
+  }
 }
