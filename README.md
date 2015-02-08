@@ -35,3 +35,20 @@ server.use( authUtils.systemAPIKey() );
 **Notes:**
 
 * `SYSTEM_API_KEY` environment variable must be defined
+
+
+### Authorization route for Blitz.io load testing
+
+```javascript
+var blitzio = require( "api-utils" ).blitzio;
+
+
+// Assuming an Express or Restify server is defined as 'server'
+server.get( blitzio.url, blitzio.handler );
+```
+
+**Parameters: None**
+
+**Notes:**
+
+* `BLITZ_KEY` environment variable must be defined
