@@ -5,6 +5,8 @@ npm install projectweekend/Node-API-Utils
 ```
 
 
+## Authentication
+
 ### Generate JSON web token
 
 ```javascript
@@ -38,6 +40,10 @@ server.use( authUtils.systemAPIKey() );
 
 * `SYSTEM_API_KEY` environment variable must be defined
 
+------------
+
+
+## Blitz.io
 
 ### Authorization route for Blitz.io load testing
 
@@ -54,3 +60,25 @@ server.get( blitzio.url, blitzio.handler );
 **Notes:**
 
 * `BLITZ_KEY` environment variable must be defined
+
+------------
+
+
+## Database
+
+### Mongoose connection with Fig DB fallback
+
+```javascript
+var databaseUtils = require( "api-utils" ).database;
+
+
+var db = databaseUtils.mongooseConnection();
+```
+
+**Parameters: None**
+
+**Notes:**
+
+* `MONGO_URL` environment variable must be defined if not starting the app with Fig (`fig up`)
+
+------------
