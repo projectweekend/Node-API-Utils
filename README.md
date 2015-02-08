@@ -30,7 +30,9 @@ var authUtils = require( "api-utils" ).authentication;
 server.use( authUtils.systemAPIKey() );
 ```
 
-**Parameters: None**
+**Parameters:**
+
+* An array of routes to skip API check
 
 **Notes:**
 
