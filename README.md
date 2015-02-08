@@ -16,5 +16,5 @@ var token = authUtils.generateJWT( user, [ "id", "email", "role" ] );
 
 **Parameters:**
 
-* The user object to serialize into a token
+* A user object to serialize into a token
 * An array of user properties to include in the serialization
