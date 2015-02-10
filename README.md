@@ -54,7 +54,7 @@ var blitzio = require( "api-utils" ).blitzio;
 
 
 // Assuming an Express or Restify server is defined as 'server'
-server.get( blitzio.url, blitzio.handler );
+server.get( blitzio.url(), blitzio.handler );
 ```
 
 **Parameters: None**
