@@ -31,12 +31,12 @@ var authUtils = require( "api-utils" ).authentication;
 
 
 // Assuming an Express or Restify server is defined as 'server'
-server.use( authUtils.systemAPIKey() );
+server.use( authUtils.systemAPIKey( [ "/skip-this-route" ] ) );
 ```
 
 **Parameters:**
 
-* An array of routes to skip API check
+* An array of routes to skip API check (optional)
 
 **Notes:**
 
