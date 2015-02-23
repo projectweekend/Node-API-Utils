@@ -84,3 +84,27 @@ var db = databaseUtils.mongooseConnection();
 * `MONGO_URL` environment variable must be defined if not starting the app with Fig (`fig up`)
 
 ------------
+
+
+### Errors
+
+#### Common HTTP errors
+
+```javascript
+var errors = require( "api-utils" ).errors;
+
+
+errors.system( "Something went wrong on the server" );
+
+errors.auth( "Invalid credentials" );
+
+errors.notAuthorized( "You can't do that!" );
+
+errors.conflict( "Email is in use" );
+```
+
+**Notes:**
+
+* Each error function takes a `message` parameter and returns a JavaScript `Error` with the `status` property set to the appropriate HTTP code, so you can pass these to `next()` and let Express middleware do the rest.
+
+------------
