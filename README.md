@@ -100,6 +100,8 @@ errors.auth( "Invalid credentials" );
 
 errors.notAuthorized( "You can't do that!" );
 
+errors.resourceNotFound( "That doesn't exist" );
+
 errors.conflict( "Email is in use" );
 ```
 
