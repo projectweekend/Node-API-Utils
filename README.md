@@ -86,6 +86,38 @@ var db = databaseUtils.mongooseConnection();
 ------------
 
 
+### Responses
+
+#### Common HTTP Response Callbacks
+
+```javascript
+var responses = require( "api-utils" ).responses;
+
+
+exports.create = function ( req, res, next ) {
+
+    // Send a 201 and the database result, or pass error to handler middleware
+    CreateSomethingInDatabase( thingToCreate, responses.createdResponse( res, next ) );
+
+};
+
+// Other responses:
+
+// Send a 201 and the database result, or pass error to handler middleware.
+// Behaves like a detail response and sends 404 when parent document is not found
+responses.nestedCreateResponse
+
+// Send 200 and result, or pass error to handler
+responses.listResponse
+
+// Send 200 and result, or pass error to handler. Sends a 404 when the result is empty.
+responses.detailResponse
+
+// Send 204 and no body, or pass error to handler. Sends a 404 when the result is empty.
+responses.deleteResponse
+```
+
+
 ### Errors
 
 #### Common HTTP errors
