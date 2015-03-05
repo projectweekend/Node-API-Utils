@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Node-api-utils by projectweekend</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Node-api-utils</h1>
+        <p>A collection of things I like to use when building web APIs in Node.js</p>
+
+        <p class="view"><a href="https://github.com/projectweekend/Node-API-Utils">View the Project on GitHub <small>projectweekend/Node-API-Utils</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/projectweekend/Node-API-Utils/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/projectweekend/Node-API-Utils/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/projectweekend/Node-API-Utils">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>
+<a id="install-it" class="anchor" href="#install-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install it</h2>
+
+<pre><code>npm install projectweekend/Node-API-Utils
+</code></pre>
+
+<hr>
+
+<h3>
+<a id="authentication" class="anchor" href="#authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authentication</h3>
+
+<h4>
+<a id="generate-json-web-token" class="anchor" href="#generate-json-web-token" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generate JSON web token</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> authUtils <span class="pl-k">=</span> <span class="pl-s3">require</span>( <span class="pl-s1"><span class="pl-pds">"</span>api-utils<span class="pl-pds">"</span></span> ).authentication;
+
+
+<span class="pl-s">var</span> token <span class="pl-k">=</span> authUtils.generateJWT( user, [ <span class="pl-s1"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>email<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>role<span class="pl-pds">"</span></span> ] );</pre></div>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>A user object to serialize into a token</li>
+<li>An array of user properties to include in the serialization</li>
+</ul>
+
+<h4>
+<a id="middleware-requiring-a-system-wide-api-key" class="anchor" href="#middleware-requiring-a-system-wide-api-key" aria-hidden="true"><span class="octicon octicon-link"></span></a>Middleware requiring a system-wide API key</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> authUtils <span class="pl-k">=</span> <span class="pl-s3">require</span>( <span class="pl-s1"><span class="pl-pds">"</span>api-utils<span class="pl-pds">"</span></span> ).authentication;
+
+
+<span class="pl-c">// Assuming an Express or Restify server is defined as 'server'</span>
+server.use( authUtils.systemAPIKey( [ <span class="pl-s1"><span class="pl-pds">"</span>/skip-this-route<span class="pl-pds">"</span></span> ] ) );</pre></div>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>An array of routes to skip API check (optional)</li>
+</ul>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>
+<code>SYSTEM_API_KEY</code> environment variable must be defined</li>
+</ul>
+
+<hr>
+
+<h3>
+<a id="blitzio" class="anchor" href="#blitzio" aria-hidden="true"><span class="octicon octicon-link"></span></a>Blitz.io</h3>
+
+<h4>
+<a id="authorization-route-for-blitzio-load-testing" class="anchor" href="#authorization-route-for-blitzio-load-testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authorization route for Blitz.io load testing</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> blitzio <span class="pl-k">=</span> <span class="pl-s3">require</span>( <span class="pl-s1"><span class="pl-pds">"</span>api-utils<span class="pl-pds">"</span></span> ).blitzio;
+
+
+<span class="pl-c">// Assuming an Express or Restify server is defined as 'server'</span>
+server.get( blitzio.url(), blitzio.handler );</pre></div>
+
+<p><strong>Parameters: None</strong></p>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>
+<code>BLITZ_KEY</code> environment variable must be defined</li>
+</ul>
+
+<hr>
+
+<h3>
+<a id="database" class="anchor" href="#database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Database</h3>
+
+<h4>
+<a id="mongoose-connection-with-fig-db-fallback" class="anchor" href="#mongoose-connection-with-fig-db-fallback" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mongoose connection with Fig DB fallback</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> databaseUtils <span class="pl-k">=</span> <span class="pl-s3">require</span>( <span class="pl-s1"><span class="pl-pds">"</span>api-utils<span class="pl-pds">"</span></span> ).database;
+
+
+<span class="pl-s">var</span> db <span class="pl-k">=</span> databaseUtils.mongooseConnection();</pre></div>
+
+<p><strong>Parameters: None</strong></p>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>
+<code>MONGO_URL</code> environment variable must be defined if not starting the app with Fig (<code>fig up</code>)</li>
+</ul>
+
+<hr>
+
+<h3>
+<a id="responses" class="anchor" href="#responses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Responses</h3>
+
+<h4>
+<a id="common-http-response-callbacks" class="anchor" href="#common-http-response-callbacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common HTTP Response Callbacks</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> responses <span class="pl-k">=</span> <span class="pl-s3">require</span>( <span class="pl-s1"><span class="pl-pds">"</span>api-utils<span class="pl-pds">"</span></span> ).responses;
+
+
+<span class="pl-s3">exports</span>.<span class="pl-en">create</span> <span class="pl-k">=</span> <span class="pl-st">function</span> ( <span class="pl-vpf">req</span>, <span class="pl-vpf">res</span>, <span class="pl-vpf">next</span> ) {
+
+    <span class="pl-c">// Send a 201 and the database result, or pass error to handler middleware</span>
+    CreateSomethingInDatabase( thingToCreate, responses.createdResponse( res, next ) );
+
+};
+
+<span class="pl-c">// Other responses:</span>
+
+<span class="pl-c">// Send a 201 and the database result, or pass error to handler middleware.</span>
+<span class="pl-c">// Behaves like a detail response and sends 404 when parent document is not found</span>
+responses.nestedCreateResponse
+
+<span class="pl-c">// Send 200 and result, or pass error to handler</span>
+responses.listResponse
+
+<span class="pl-c">// Send 200 and result, or pass error to handler. Sends a 404 when the result is empty.</span>
+responses.detailResponse
+
+<span class="pl-c">// Send 204 and no body, or pass error to handler. Sends a 404 when the result is empty.</span>
+responses.deleteResponse</pre></div>
+
+<h3>
+<a id="errors" class="anchor" href="#errors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Errors</h3>
+
+<h4>
+<a id="common-http-errors" class="anchor" href="#common-http-errors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common HTTP errors</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> errors <span class="pl-k">=</span> <span class="pl-s3">require</span>( <span class="pl-s1"><span class="pl-pds">"</span>api-utils<span class="pl-pds">"</span></span> ).errors;
+
+
+errors.system( <span class="pl-s1"><span class="pl-pds">"</span>Something went wrong on the server<span class="pl-pds">"</span></span> );
+
+errors.auth( <span class="pl-s1"><span class="pl-pds">"</span>Invalid credentials<span class="pl-pds">"</span></span> );
+
+errors.notAuthorized( <span class="pl-s1"><span class="pl-pds">"</span>You can't do that!<span class="pl-pds">"</span></span> );
+
+errors.resourceNotFound( <span class="pl-s1"><span class="pl-pds">"</span>That doesn't exist<span class="pl-pds">"</span></span> );
+
+errors.conflict( <span class="pl-s1"><span class="pl-pds">"</span>Email is in use<span class="pl-pds">"</span></span> );</pre></div>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>Each error function takes a <code>message</code> parameter and returns a JavaScript <code>Error</code> with the <code>status</code> property set to the appropriate HTTP code, so you can pass these to <code>next()</code> and let Express middleware do the rest.</li>
+</ul>
+
+<hr>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/projectweekend">projectweekend</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
