@@ -86,6 +86,32 @@ var db = databaseUtils.mongooseConnection();
 ------------
 
 
+### Caching
+
+#### Middleware for setting Cache-Control header
+
+```javascript
+var cacheUtils = require( "api-utils" ).cache;
+
+
+var oneMonth = 60 * 60 * 24 * 30;
+
+
+// Apply to all routes
+server.use( cacheUtils.cacheControl( oneMonth ) );
+
+
+// Apply of a specific route only
+server.get( "/", cacheUtils.cacheControl( oneMonth ), indexHandler.get );
+```
+
+**Parameters:**
+
+* An integer representing a number os seconds to keep cache alive
+
+------------
+
+
 ### Responses
 
 #### Common HTTP Response Callbacks
