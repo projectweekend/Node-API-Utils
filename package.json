@@ -1,6 +1,6 @@
 {
   "name": "api-utils",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A collection of utilities I frequently use",
   "main": "index.js",
   "scripts": {
