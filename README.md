@@ -68,20 +68,20 @@ server.get( blitzio.url(), blitzio.handler );
 
 ### Database
 
-#### Mongoose connection with Fig DB fallback
+#### Mongoose connection with Docker-Compose fallback
 
 ```javascript
 var databaseUtils = require( "api-utils" ).database;
 
 
-var db = databaseUtils.mongooseConnection();
+var db = databaseUtils.mongooseConnection( "DB_PORT" );
 ```
 
 **Parameters: None**
 
 **Notes:**
 
-* `MONGO_URL` environment variable must be defined if not starting the app with Fig (`fig up`)
+`mongooseConnection` takes an optional parameter which is the name of the environment variable provided by a linked Docker Compose service. If this variable name is not provided then the `MONGO_URL` environment variable must be defined.
 
 ------------
 
